@@ -6,6 +6,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg?maxAge=2592000)](https://hub.docker.com/r/digitalmobil/mautic-build-tools/)
 [![Docker Automated buil](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg?maxAge=2592000)](https://hub.docker.com/r/digitalmobil/mautic-build-tools/)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/digitalmobil/mautic-build-tools)
+[![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/digitalmobil/mautic-build-tools)
 
 
 # What is this?
