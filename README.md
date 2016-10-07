@@ -13,6 +13,7 @@ A docker image that contains all build tools required for building [dm-mautic](h
 
 Features:
   * [composer](https://getcomposer.org)
+  * [Search-Replace-DB](https://github.com/interconnectit/Search-Replace-DB)
   * Use `/data` as the working directory 
   * Executing as non-privileged user `mautic-build`
   * Preserving file permissions by adopting the `/data` dir owner's UID
@@ -27,26 +28,35 @@ docker pull digitalmobil/mautic-build-tools
 
 ## Usage
 
-Simple composer call in the current directory: 
+1. Run composer
 
-```sh
-docker run --rm -v $(pwd):/data digitalmobil/mautic-build-tools composer --help
-```
+    Simple composer call in the current directory:
 
-If working with packages installed via git ssh the local .ssh directory shall be mapped into the container: 
+    ```sh
+    docker run --rm -v $(pwd):/data digitalmobil/mautic-build-tools composer --help
+    ```
 
-```sh
-docker run --rm -v $(pwd):/data               \
-                -v ~/.ssh:/home/mautic-build/.ssh \
-                digitalmobil/mautic-build-tools composer install
-```
+    If working with packages installed via git ssh the local .ssh directory shall be mapped into the container:
 
-To speed up things the local cache can be utilized as well: 
+    ```sh
+    docker run --rm -v $(pwd):/data               \
+                    -v ~/.ssh:/home/mautic-build/.ssh \
+                    digitalmobil/mautic-build-tools composer install
+    ```
 
-```sh
-docker run --rm -v $(pwd):/data                         \
-                -v ~/.ssh:/home/mautic-build/.ssh           \
-                -v ~/.composer:/home/mautic-build/.composer \
-                digitalmobil/mautic-build-tools composer install
-```
+    To speed up things the local cache can be utilized as well:
+
+    ```sh
+    docker run --rm -v $(pwd):/data                         \
+                    -v ~/.ssh:/home/mautic-build/.ssh           \
+                    -v ~/.composer:/home/mautic-build/.composer \
+                    digitalmobil/mautic-build-tools composer install
+    ```
+
+2. Run [SRDB](https://github.com/interconnectit/Search-Replace-DB)
+
+    ```sh
+    docker run --rm --link mautic_azo_staging_db:db mautic-build-tools \
+           srdb -h db -u root -p "MYSQL_ROOT_PW" -n DB_NAME -s SEARCH -r REPLACE
+    ```
 
