@@ -1,6 +1,6 @@
-# Wordpress Build Tools
+# Mautic Build Tools
 
-[![build status](https://git.dev-digitalmobil.com/dm-wordpress/mautic-build-tools/badges/master/build.svg)](https://git.dev-digitalmobil.com/dm-wordpress/mautic-build-tools/commits/master)
+[![build status](https://git.dev-digitalmobil.com/dm-mautic/mautic-build-tools/badges/master/build.svg)](https://git.dev-digitalmobil.com/dm-mautic/mautic-build-tools/commits/master)
 [![](https://images.microbadger.com/badges/version/digitalmobil/mautic-build-tools.svg)](http://microbadger.com/images/digitalmobil/mautic-build-tools "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/digitalmobil/mautic-build-tools.svg)](http://microbadger.com/images/digitalmobil/mautic-build-tools "Get your own image badge on microbadger.com")
 [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg?maxAge=2592000)](https://hub.docker.com/r/digitalmobil/mautic-build-tools/)
