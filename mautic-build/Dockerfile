@@ -5,9 +5,23 @@ RUN adduser --gecos "" --disabled-password --home /home/mautic-build mautic-buil
 
 RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
     ssh sudo subversion git bzip2 zip unzip \
+    libfreetype6-dev \
+    libjpeg-dev \
+    libkrb5-dev \
+    libmcrypt-dev \
+    libpng-dev \
+    libssl-dev \
+    libwebp-dev \
+    libxpm-dev \
+    libc-client-dev \
+    libicu-dev \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+
+RUN docker-php-ext-install gd imap intl mbstring mcrypt mysqli pdo pdo_mysql zip
 
 RUN  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
      php -r "copy('https://composer.github.io/installer.sig', 'composer-setup.sig');" && \
