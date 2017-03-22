@@ -3,7 +3,7 @@ stages:
   - release
 
 variables:
-  BUILD_IMAGE: $CI_REGISTRY_IMAGE:master
+  BUILD_IMAGE: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG
   RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
 
 before_script:
@@ -12,8 +12,6 @@ before_script:
 
 build:image:
   stage: build
-  only:
-    - master
   tags:
     - shell-executor
     - docker
@@ -23,8 +21,6 @@ build:image:
 
 release:image:
   stage: release
-  only: 
-    - master
   tags:
     - shell-executor
     - docker
